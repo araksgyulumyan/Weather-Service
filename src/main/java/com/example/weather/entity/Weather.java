@@ -1,50 +1,27 @@
 package com.example.weather.entity;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "weather")
 @NoArgsConstructor
+@Getter
+@Setter
 public class Weather {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
-    @Size(min = 5, message = "Country must be at least 5 characters long")
+    @NotNull(message = "Country should not be null")
     private String country;
 
-    @NotNull
-    @Size(min = 5, message = "Type must be at least 5 characters long")
+    @NotNull(message = "Type should not be null")
     private String type;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
 }
